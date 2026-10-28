@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InstaCloud 节点中心</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 90%; max-width: 500px; text-align: center; }
+        textarea { width: 95%; height: 100px; padding: 10px; margin-top: 15px; border: 1px solid #ddd; border-radius: 6px; resize: none; background: #fafafa; word-break: break-all; }
+        button { margin-top: 20px; background: #1677ff; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #0958d9; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2 style="margin-top: 0; color: #333;">🎉 节点部署成功</h2>
+        <p style="color: #666; font-size: 14px;">节点链接已根据当前外网域名自动生成</p>
+        <textarea id="node" readonly></textarea>
+        <button onclick="copyBtn()" id="btn">一键复制节点</button>
+    </div>
+    <script>
+        const host = window.location.host;
+        const uuid = "66666666-6666-6666-6666-666666666666";
+        const link = `vless://${uuid}@${host}:443?encryption=none&security=tls&type=ws&host=${host}&path=%2Fproxy#InstaCloud-Auto`;
+        document.getElementById('node').value = link;
+        function copyBtn() {
+            const nodeInput = document.getElementById('node');
+            nodeInput.select();
+            document.execCommand('copy');
+            const btn = document.getElementById('btn');
+            btn.innerText = '复制成功！';
+            btn.style.background = '#52c41a';
+            setTimeout(() => { btn.innerText = '一键复制节点'; btn.style.background = '#1677ff'; }, 2000);
+        }
+    </script>
+</body>
+</html>

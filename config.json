@@ -1,0 +1,18 @@
+﻿{
+  "inbounds": [
+    {
+      "port": 8081,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {
+        "clients": [{"id": "66666666-6666-6666-6666-666666666666"}],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {"path": "/proxy"}
+      }
+    }
+  ],
+  "outbounds": [{"protocol": "freedom"}]
+}
